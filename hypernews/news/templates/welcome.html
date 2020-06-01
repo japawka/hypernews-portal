@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<body>
+    <form action="/news/" method="get">
+        <input type="search" name="q">
+        <input type="submit" value="Send">
+    </form>
+<h2>Hyper news</h2>
+    {% if found %}
+        {%for date,new in news.items %}
+        <ul>
+            {% for item in new %}
+                {% if found in item.title %}
+                    <h4>{{date}}</h4>
+            <li><a href="/news/{{item.link}}/">{{item.title}}</a></li>
+                {% endif%}
+            {% endfor %}
+        </ul>
+        {% endfor %}
+
+    {% else%}
+        {%for date,new in news.items %}
+        <h4>{{date}}</h4>
+        <ul>
+            {% for item in new %}
+            <li><a href="/news/{{item.link}}/">{{item.title}}</a></li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    {% endif%}
+<a href="/news/create/">Create</a>
+</body>
+</html>

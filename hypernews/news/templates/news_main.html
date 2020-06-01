@@ -1,0 +1,18 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<body>
+<h2>Hyper news</h2>
+{%for date,new in news.items %}
+<h4>{{date}}</h4>
+<ul>
+    {%for item in new %}
+    <li><a href="/news/{{item.link}}/">{{item.title}}</a></li>
+    {% endfor %}
+</ul>
+{% endfor %}
+<a href="/news/create/">Create</a>
+</body>
+</html>
